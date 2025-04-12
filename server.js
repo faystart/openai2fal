@@ -293,7 +293,7 @@ app.post('/v1/chat/completions', async (req, res) => {
 
                     if (errorInfo) {
                         console.error("Error received in fal stream event:", errorInfo);
-                        const errorChunk = { id: `chatcmpl-${Date.now()}-error', object: "chat.completion.chunk", created: Math.floor(Date.now() / 1000), model: model, choices: [{ index: 0, delta: {}, finish_reason: "error", message: { role: 'assistant', content: `Fal Stream Error: ${JSON.stringify(errorInfo)}` } }] };
+                        const errorChunk = { id: `chatcmpl-${Date.now()}-error`, object: "chat.completion.chunk", created: Math.floor(Date.now() / 1000), model: model, choices: [{ index: 0, delta: {}, finish_reason: "error", message: { role: 'assistant', content: `Fal Stream Error: ${JSON.stringify(errorInfo)}` } }] };
                         res.write(`data: ${JSON.stringify(errorChunk)}\n\n`);
                         break;
                     }
